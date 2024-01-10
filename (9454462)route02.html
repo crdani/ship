@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_eff6fef397d72e901ccdbedf63d69987 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    
+            <style>
+                #export {
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    z-index: 999;
+                    background: white;
+                    color: black;
+                    padding: 6px;
+                    border-radius: 4px;
+                    font-family: 'Helvetica Neue';
+                    cursor: pointer;
+                    font-size: 12px;
+                    text-decoration: none;
+                    top: 90px;
+                }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_eff6fef397d72e901ccdbedf63d69987" ></div>
+        
+    <a href='#' id='export'>Export</a>
+</body>
+<script>
+    
+    
+            var map_eff6fef397d72e901ccdbedf63d69987 = L.map(
+                "map_eff6fef397d72e901ccdbedf63d69987",
+                {
+                    center: [43.321936666666666, -1.92022],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_dd72342516fc4f971c9eb6b9352534cd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_dd72342516fc4f971c9eb6b9352534cd.addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var tile_layer_0970f2928791cc03bb74b7dcb9691641 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u00a9 OpenStreetMap contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_0970f2928791cc03bb74b7dcb9691641.addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var tile_layer_01e0b65a0c8659dca1321780be6b55b0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "Map tiles by Carto, under CC BY 3.0. Data by OpenStreetMap, under ODbL", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_01e0b65a0c8659dca1321780be6b55b0.addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var tile_layer_df0ae8a1b2ddd476c5f26633ffea6e2c = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_df0ae8a1b2ddd476c5f26633ffea6e2c.addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var layer_control_5cca20254c8bb9f9a9632d5ebe2a3006_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_0970f2928791cc03bb74b7dcb9691641,
+                    "cartodbpositron" : tile_layer_01e0b65a0c8659dca1321780be6b55b0,
+                    "cartodbdarkmatter" : tile_layer_df0ae8a1b2ddd476c5f26633ffea6e2c,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_5cca20254c8bb9f9a9632d5ebe2a3006 = L.control.layers(
+                layer_control_5cca20254c8bb9f9a9632d5ebe2a3006_layers.base_layers,
+                layer_control_5cca20254c8bb9f9a9632d5ebe2a3006_layers.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+
+        
+    
+            var tile_layer_dec3c52e736306ddca256b2fafb052ca = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_17c929d87af8b93fc660fed3f5d0a86f = new L.Control.MiniMap(
+                tile_layer_dec3c52e736306ddca256b2fafb052ca,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_eff6fef397d72e901ccdbedf63d69987.addControl(mini_map_17c929d87af8b93fc660fed3f5d0a86f);
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var options = {
+              position: "bottomleft",
+              draw: {},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems_draw_control_1fc81e04f02b3951176bcca7296bcc82 = new L.featureGroup().addTo(
+                map_eff6fef397d72e901ccdbedf63d69987
+            );
+            options.edit.featureGroup = drawnItems_draw_control_1fc81e04f02b3951176bcca7296bcc82;
+            var draw_control_1fc81e04f02b3951176bcca7296bcc82 = new L.Control.Draw(
+                options
+            ).addTo( map_eff6fef397d72e901ccdbedf63d69987 );
+            map_eff6fef397d72e901ccdbedf63d69987.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on('click', function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems_draw_control_1fc81e04f02b3951176bcca7296bcc82.addLayer(layer);
+             });
+            map_eff6fef397d72e901ccdbedf63d69987.on('draw:created', function(e) {
+                drawnItems_draw_control_1fc81e04f02b3951176bcca7296bcc82.addLayer(e.layer);
+            });
+            
+            document.getElementById('export').onclick = function(e) {
+                var data = drawnItems_draw_control_1fc81e04f02b3951176bcca7296bcc82.toGeoJSON();
+                var convertedData = 'text/json;charset=utf-8,'
+                    + encodeURIComponent(JSON.stringify(data));
+                document.getElementById('export').setAttribute(
+                    'href', 'data:' + convertedData
+                );
+                document.getElementById('export').setAttribute(
+                    'download', "data.geojson"
+                );
+            }
+            
+        
+    
+            var measure_control_fef5ea2ea0e955e3859e66eb7024eb4f = new L.Control.Measure(
+                {"position": "topright", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "meters", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_eff6fef397d72e901ccdbedf63d69987.addControl(measure_control_fef5ea2ea0e955e3859e66eb7024eb4f);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var circle_4b72cf8682fbf3868bedc4208775f127 = L.circle(
+                [43.321936666666666, -1.92022],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_4a306936e5e8bae185078243d21bd327 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e8f2dbd6ff16c370fa8dbdc7c4b22347 = $(`<div id="html_e8f2dbd6ff16c370fa8dbdc7c4b22347" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.321936666666666°<br>     <b>Longitude:</b> -1.92022°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 163.0°<br>     <b>Heading:</b> 121°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.33 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.625 hPa<br>     <b>Ground Level:</b> 1018.625 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_4a306936e5e8bae185078243d21bd327.setContent(html_e8f2dbd6ff16c370fa8dbdc7c4b22347);
+            
+        
+
+        circle_4b72cf8682fbf3868bedc4208775f127.bindPopup(popup_4a306936e5e8bae185078243d21bd327)
+        ;
+
+        
+    
+    
+            var circle_654858973eb0b665f979f43811092e55 = L.circle(
+                [43.321936666666666, -1.920218333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_76f71a4489015bda989cae4125a841d2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_20882efbd819b2e20e9038983e809183 = $(`<div id="html_20882efbd819b2e20e9038983e809183" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.321936666666666°<br>     <b>Longitude:</b> -1.920218333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 175.8°<br>     <b>Heading:</b> 121°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.33 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.6875 hPa<br>     <b>Ground Level:</b> 1018.6875 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_76f71a4489015bda989cae4125a841d2.setContent(html_20882efbd819b2e20e9038983e809183);
+            
+        
+
+        circle_654858973eb0b665f979f43811092e55.bindPopup(popup_76f71a4489015bda989cae4125a841d2)
+        ;
+
+        
+    
+    
+            var circle_bfc29bf4b8f939d8e099edf139166dee = L.circle(
+                [43.32194, -1.920218333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_1257e1da327a25b6cd6cdf16d29a7250 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_357fc0e500530a0bb926fbdd5eb8cdc4 = $(`<div id="html_357fc0e500530a0bb926fbdd5eb8cdc4" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.32194°<br>     <b>Longitude:</b> -1.920218333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 177.5°<br>     <b>Heading:</b> 121°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.33 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.75 hPa<br>     <b>Ground Level:</b> 1018.75 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_1257e1da327a25b6cd6cdf16d29a7250.setContent(html_357fc0e500530a0bb926fbdd5eb8cdc4);
+            
+        
+
+        circle_bfc29bf4b8f939d8e099edf139166dee.bindPopup(popup_1257e1da327a25b6cd6cdf16d29a7250)
+        ;
+
+        
+    
+    
+            var circle_e407f5681e6dc449acbf3327303b9eb4 = L.circle(
+                [43.32194166666667, -1.920215],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_f91aff470eddc803c4e445d311385127 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_be5aab7d9001a87f7103a0a964e0f57d = $(`<div id="html_be5aab7d9001a87f7103a0a964e0f57d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.32194166666667°<br>     <b>Longitude:</b> -1.920215°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 187.5°<br>     <b>Heading:</b> 121°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.33 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.8125 hPa<br>     <b>Ground Level:</b> 1018.8125 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_f91aff470eddc803c4e445d311385127.setContent(html_be5aab7d9001a87f7103a0a964e0f57d);
+            
+        
+
+        circle_e407f5681e6dc449acbf3327303b9eb4.bindPopup(popup_f91aff470eddc803c4e445d311385127)
+        ;
+
+        
+    
+    
+            var circle_9c4f58a948bb5a01ff538bbe90fa394d = L.circle(
+                [43.32194666666667, -1.920218333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_12665108387661dba66f85d7c76c0728 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1fa8129aef684c2c174fd4b6d83335c7 = $(`<div id="html_1fa8129aef684c2c174fd4b6d83335c7" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.32194666666667°<br>     <b>Longitude:</b> -1.920218333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 180.5°<br>     <b>Heading:</b> 122°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.33 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.875 hPa<br>     <b>Ground Level:</b> 1018.875 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.30375 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_12665108387661dba66f85d7c76c0728.setContent(html_1fa8129aef684c2c174fd4b6d83335c7);
+            
+        
+
+        circle_9c4f58a948bb5a01ff538bbe90fa394d.bindPopup(popup_12665108387661dba66f85d7c76c0728)
+        ;
+
+        
+    
+    
+            var circle_91fa206b2b88a4bc3bfbd09a298da637 = L.circle(
+                [43.358235, -1.980623333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_ceea5af54aeb87e44e19a6df369cc0a2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b7965fb3041a3cb9aa9100e1ad19728 = $(`<div id="html_4b7965fb3041a3cb9aa9100e1ad19728" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358235°<br>     <b>Longitude:</b> -1.980623333°<br>     <b>Speed:</b> 9.6m/s<br>     <b>Course:</b> 290.3°<br>     <b>Heading:</b> 290°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.42 K<br>     <b>Condition:</b> light intensity shower rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1018.9375 hPa<br>     <b>Ground Level:</b> 1018.9375 hPa<br>     <b>Wind Speed:</b> 1.54 m/s<br>     <b>Wind Degree:</b> 140°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_ceea5af54aeb87e44e19a6df369cc0a2.setContent(html_4b7965fb3041a3cb9aa9100e1ad19728);
+            
+        
+
+        circle_91fa206b2b88a4bc3bfbd09a298da637.bindPopup(popup_ceea5af54aeb87e44e19a6df369cc0a2)
+        ;
+
+        
+    
+    
+            var circle_c9f944c123027eade371b736e8a13b04 = L.circle(
+                [43.38484833333333, -2.082541667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_522a8e26e1822cb54b035e61b89978d2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e41e9ac69e0d0dfe8dd87f42a217f69a = $(`<div id="html_e41e9ac69e0d0dfe8dd87f42a217f69a" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.38484833333333°<br>     <b>Longitude:</b> -2.082541667°<br>     <b>Speed:</b> 9.1m/s<br>     <b>Course:</b> 288.5°<br>     <b>Heading:</b> 286°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.43 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 8.95 m/s<br>     <b>Wind Degree:</b> 328°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 98%<br>     </div>`)[0];
+                popup_522a8e26e1822cb54b035e61b89978d2.setContent(html_e41e9ac69e0d0dfe8dd87f42a217f69a);
+            
+        
+
+        circle_c9f944c123027eade371b736e8a13b04.bindPopup(popup_522a8e26e1822cb54b035e61b89978d2)
+        ;
+
+        
+    
+    
+            var circle_2f84e5160ffd68e19528ef9faff635f3 = L.circle(
+                [43.40784333333333, -2.180391667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_84148b7841aee92db591695a548e1d55 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bcd21a3f8ab70835cd81293243d7cdb3 = $(`<div id="html_bcd21a3f8ab70835cd81293243d7cdb3" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.40784333333333°<br>     <b>Longitude:</b> -2.180391667°<br>     <b>Speed:</b> 9.1m/s<br>     <b>Course:</b> 288.0°<br>     <b>Heading:</b> 285°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.47 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 9.88 m/s<br>     <b>Wind Degree:</b> 328°<br>     <b>Wind Gust:</b> 11.8 m/s<br>     <b>Cloud Coverage:</b> 96%<br>     </div>`)[0];
+                popup_84148b7841aee92db591695a548e1d55.setContent(html_bcd21a3f8ab70835cd81293243d7cdb3);
+            
+        
+
+        circle_2f84e5160ffd68e19528ef9faff635f3.bindPopup(popup_84148b7841aee92db591695a548e1d55)
+        ;
+
+        
+    
+    
+            var circle_cfb84fca456e9ea09fb0fb6e08301c3e = L.circle(
+                [43.430325, -2.280365],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_1dc5d2b1ce6945574ba98332aae3b8ee = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_03813be96c03e2e8ca3158b904bab3ac = $(`<div id="html_03813be96c03e2e8ca3158b904bab3ac" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.430325°<br>     <b>Longitude:</b> -2.280365°<br>     <b>Speed:</b> 9.1m/s<br>     <b>Course:</b> 289.2°<br>     <b>Heading:</b> 286°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.49 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 68%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 10.52 m/s<br>     <b>Wind Degree:</b> 327°<br>     <b>Wind Gust:</b> 12.2 m/s<br>     <b>Cloud Coverage:</b> 95%<br>     </div>`)[0];
+                popup_1dc5d2b1ce6945574ba98332aae3b8ee.setContent(html_03813be96c03e2e8ca3158b904bab3ac);
+            
+        
+
+        circle_cfb84fca456e9ea09fb0fb6e08301c3e.bindPopup(popup_1dc5d2b1ce6945574ba98332aae3b8ee)
+        ;
+
+        
+    
+    
+            var circle_54f202e111ed5522ac21551fe200059a = L.circle(
+                [43.45543, -2.38029],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_49fd97c87cb20225fa37547239efeafe = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b5f9b949d3efa759edff5db9a657d6c6 = $(`<div id="html_b5f9b949d3efa759edff5db9a657d6c6" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.45543°<br>     <b>Longitude:</b> -2.38029°<br>     <b>Speed:</b> 9.2m/s<br>     <b>Course:</b> 290.0°<br>     <b>Heading:</b> 288°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.52 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 68%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 10.69 m/s<br>     <b>Wind Degree:</b> 326°<br>     <b>Wind Gust:</b> 12.2 m/s<br>     <b>Cloud Coverage:</b> 96%<br>     </div>`)[0];
+                popup_49fd97c87cb20225fa37547239efeafe.setContent(html_b5f9b949d3efa759edff5db9a657d6c6);
+            
+        
+
+        circle_54f202e111ed5522ac21551fe200059a.bindPopup(popup_49fd97c87cb20225fa37547239efeafe)
+        ;
+
+        
+    
+    
+            var circle_777c1109652027e5524db8768304e265 = L.circle(
+                [43.480315, -2.476006667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_8f19a32d5021740ec3a56753434c5917 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_84aab16e35ed6ae3ed4d0c0ad95359dc = $(`<div id="html_84aab16e35ed6ae3ed4d0c0ad95359dc" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.480315°<br>     <b>Longitude:</b> -2.476006667°<br>     <b>Speed:</b> 8.8m/s<br>     <b>Course:</b> 287.7°<br>     <b>Heading:</b> 287°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 281.82 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 67%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 11.06 m/s<br>     <b>Wind Degree:</b> 325°<br>     <b>Wind Gust:</b> 12.2 m/s<br>     <b>Cloud Coverage:</b> 98%<br>     </div>`)[0];
+                popup_8f19a32d5021740ec3a56753434c5917.setContent(html_84aab16e35ed6ae3ed4d0c0ad95359dc);
+            
+        
+
+        circle_777c1109652027e5524db8768304e265.bindPopup(popup_8f19a32d5021740ec3a56753434c5917)
+        ;
+
+        
+    
+    
+            var circle_7079ed09cf222f7b335b69b8b82ad1be = L.circle(
+                [43.50443833333333, -2.572366667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_5cec7157df9f6880889d2dedce201185 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5036ea7c25b57e1a3a7335973773ec7d = $(`<div id="html_5036ea7c25b57e1a3a7335973773ec7d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.50443833333333°<br>     <b>Longitude:</b> -2.572366667°<br>     <b>Speed:</b> 9.0m/s<br>     <b>Course:</b> 289.6°<br>     <b>Heading:</b> 287°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.23 K<br>     <b>Condition:</b> overcast clouds <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 66%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 11.53 m/s<br>     <b>Wind Degree:</b> 325°<br>     <b>Wind Gust:</b> 12.4 m/s<br>     <b>Cloud Coverage:</b> 91%<br>     </div>`)[0];
+                popup_5cec7157df9f6880889d2dedce201185.setContent(html_5036ea7c25b57e1a3a7335973773ec7d);
+            
+        
+
+        circle_7079ed09cf222f7b335b69b8b82ad1be.bindPopup(popup_5cec7157df9f6880889d2dedce201185)
+        ;
+
+        
+    
+    
+            var circle_6327e92b694add783f249a805a916235 = L.circle(
+                [43.524058333333336, -2.65468],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_7baf0989b51ddf73875ebe9203333a68 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_748a76541501df0b8c478857bec4cbd8 = $(`<div id="html_748a76541501df0b8c478857bec4cbd8" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.524058333333336°<br>     <b>Longitude:</b> -2.65468°<br>     <b>Speed:</b> 9.1m/s<br>     <b>Course:</b> 286.3°<br>     <b>Heading:</b> 285°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.29 K<br>     <b>Condition:</b> light rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 66%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 11.52 m/s<br>     <b>Wind Degree:</b> 325°<br>     <b>Wind Gust:</b> 12.4 m/s<br>     <b>Cloud Coverage:</b> 83%<br>     </div>`)[0];
+                popup_7baf0989b51ddf73875ebe9203333a68.setContent(html_748a76541501df0b8c478857bec4cbd8);
+            
+        
+
+        circle_6327e92b694add783f249a805a916235.bindPopup(popup_7baf0989b51ddf73875ebe9203333a68)
+        ;
+
+        
+    
+    
+            var circle_f60f90e495a9d7bf37da57330aab4ee7 = L.circle(
+                [43.533715, -2.77679],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_191e8414b3a22ca758955020bf1199c8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_416b170f38eaaa96dab9ef3278d8dcf9 = $(`<div id="html_416b170f38eaaa96dab9ef3278d8dcf9" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.533715°<br>     <b>Longitude:</b> -2.77679°<br>     <b>Speed:</b> 9.3m/s<br>     <b>Course:</b> 264.3°<br>     <b>Heading:</b> 264°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.31 K<br>     <b>Condition:</b> light rain <br>     <b>Pressure:</b> 1019 hPa<br>     <b>Humidity:</b> 66%<br>     <b>Sea Level:</b> 1019.0 hPa<br>     <b>Ground Level:</b> 1019.0 hPa<br>     <b>Wind Speed:</b> 11.47 m/s<br>     <b>Wind Degree:</b> 325°<br>     <b>Wind Gust:</b> 12.4 m/s<br>     <b>Cloud Coverage:</b> 73%<br>     </div>`)[0];
+                popup_191e8414b3a22ca758955020bf1199c8.setContent(html_416b170f38eaaa96dab9ef3278d8dcf9);
+            
+        
+
+        circle_f60f90e495a9d7bf37da57330aab4ee7.bindPopup(popup_191e8414b3a22ca758955020bf1199c8)
+        ;
+
+        
+    
+    
+            var circle_d078a992f03f525625a19884844b3103 = L.circle(
+                [43.527005, -2.899938333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_e3a1ab72c383e3645c12b97eb33f7b1c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ee13f943976b08612fe316ffdc818f71 = $(`<div id="html_ee13f943976b08612fe316ffdc818f71" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.527005°<br>     <b>Longitude:</b> -2.899938333°<br>     <b>Speed:</b> 9.0m/s<br>     <b>Course:</b> 267.1°<br>     <b>Heading:</b> 263°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.33 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 66%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 11.3 m/s<br>     <b>Wind Degree:</b> 325°<br>     <b>Wind Gust:</b> 12.5 m/s<br>     <b>Cloud Coverage:</b> 71%<br>     </div>`)[0];
+                popup_e3a1ab72c383e3645c12b97eb33f7b1c.setContent(html_ee13f943976b08612fe316ffdc818f71);
+            
+        
+
+        circle_d078a992f03f525625a19884844b3103.bindPopup(popup_e3a1ab72c383e3645c12b97eb33f7b1c)
+        ;
+
+        
+    
+    
+            var circle_3bf653ee06d7eb6249118e8fc32422cc = L.circle(
+                [43.499408333333335, -2.972051667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_973f96f147268c9d50af138c6f99816c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cde3dd33ae524f576f3f589f67042567 = $(`<div id="html_cde3dd33ae524f576f3f589f67042567" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.499408333333335°<br>     <b>Longitude:</b> -2.972051667°<br>     <b>Speed:</b> 9.0m/s<br>     <b>Course:</b> 225.9°<br>     <b>Heading:</b> 225°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.33 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 11.16 m/s<br>     <b>Wind Degree:</b> 324°<br>     <b>Wind Gust:</b> 12.5 m/s<br>     <b>Cloud Coverage:</b> 72%<br>     </div>`)[0];
+                popup_973f96f147268c9d50af138c6f99816c.setContent(html_cde3dd33ae524f576f3f589f67042567);
+            
+        
+
+        circle_3bf653ee06d7eb6249118e8fc32422cc.bindPopup(popup_973f96f147268c9d50af138c6f99816c)
+        ;
+
+        
+    
+    
+            var circle_d1b694e0c4f513ade93cd81e3845d2ab = L.circle(
+                [43.45325833333333, -3.040803333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_e01e3a998c45d5e1d4c339c59530c9aa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_979774b0f3528d270f99c2124447ffaf = $(`<div id="html_979774b0f3528d270f99c2124447ffaf" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.45325833333333°<br>     <b>Longitude:</b> -3.040803333°<br>     <b>Speed:</b> 9.1m/s<br>     <b>Course:</b> 227.3°<br>     <b>Heading:</b> 225°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.33 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 2.57 m/s<br>     <b>Wind Degree:</b> 260°<br>     <b>Wind Gust:</b> 11.9 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_e01e3a998c45d5e1d4c339c59530c9aa.setContent(html_979774b0f3528d270f99c2124447ffaf);
+            
+        
+
+        circle_d1b694e0c4f513ade93cd81e3845d2ab.bindPopup(popup_e01e3a998c45d5e1d4c339c59530c9aa)
+        ;
+
+        
+    
+    
+            var circle_5ba49f2b2c0041781a550261410c8ae4 = L.circle(
+                [43.42703166666666, -3.106403333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_ec454a3341e278e1fdf75d4457e67d82 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0a5ead46b7ae4d031f293441a8e4f18d = $(`<div id="html_0a5ead46b7ae4d031f293441a8e4f18d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.42703166666666°<br>     <b>Longitude:</b> -3.106403333°<br>     <b>Speed:</b> 2.6m/s<br>     <b>Course:</b> 242.3°<br>     <b>Heading:</b> 219°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.33 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 82%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 8.67 m/s<br>     <b>Wind Degree:</b> 324°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 78%<br>     </div>`)[0];
+                popup_ec454a3341e278e1fdf75d4457e67d82.setContent(html_0a5ead46b7ae4d031f293441a8e4f18d);
+            
+        
+
+        circle_5ba49f2b2c0041781a550261410c8ae4.bindPopup(popup_ec454a3341e278e1fdf75d4457e67d82)
+        ;
+
+        
+    
+    
+            var circle_29fa1afc47fdd2b3b15c34cd8e2b1147 = L.circle(
+                [43.36992, -3.06102],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_1f456b4d8d9822c1fc5e2ffb4978491d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f92d6b7186dfd80fdabaf4f4e927c8cc = $(`<div id="html_f92d6b7186dfd80fdabaf4f4e927c8cc" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.36992°<br>     <b>Longitude:</b> -3.06102°<br>     <b>Speed:</b> 9.2m/s<br>     <b>Course:</b> 123.7°<br>     <b>Heading:</b> 124°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_1f456b4d8d9822c1fc5e2ffb4978491d.setContent(html_f92d6b7186dfd80fdabaf4f4e927c8cc);
+            
+        
+
+        circle_29fa1afc47fdd2b3b15c34cd8e2b1147.bindPopup(popup_1f456b4d8d9822c1fc5e2ffb4978491d)
+        ;
+
+        
+    
+    
+            var circle_7490aaf3956d4ba620f274eafa8f91a2 = L.circle(
+                [43.358715, -3.062521667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_c74cfbf4d03f19d6078be0492b0bd90c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e099300d7d5411adc034471966d0e6cc = $(`<div id="html_e099300d7d5411adc034471966d0e6cc" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358715°<br>     <b>Longitude:</b> -3.062521667°<br>     <b>Speed:</b> 0.1m/s<br>     <b>Course:</b> 175.4°<br>     <b>Heading:</b> 98°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_c74cfbf4d03f19d6078be0492b0bd90c.setContent(html_e099300d7d5411adc034471966d0e6cc);
+            
+        
+
+        circle_7490aaf3956d4ba620f274eafa8f91a2.bindPopup(popup_c74cfbf4d03f19d6078be0492b0bd90c)
+        ;
+
+        
+    
+    
+            var circle_194ad35cddda3c00a116d58850a33875 = L.circle(
+                [43.358711666666665, -3.062516667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_381b6524e5f9a06715a6b305029da574 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3934a464c4c67282e4cc9338d1f6c4f0 = $(`<div id="html_3934a464c4c67282e4cc9338d1f6c4f0" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358711666666665°<br>     <b>Longitude:</b> -3.062516667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 170.7°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_381b6524e5f9a06715a6b305029da574.setContent(html_3934a464c4c67282e4cc9338d1f6c4f0);
+            
+        
+
+        circle_194ad35cddda3c00a116d58850a33875.bindPopup(popup_381b6524e5f9a06715a6b305029da574)
+        ;
+
+        
+    
+    
+            var circle_53042cd83383f84e01fd503c90b145b2 = L.circle(
+                [43.358715, -3.062503333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_2dcb9f11b8729bd63b2163d7216d6e62 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f447ab4eaf5b6b101900fd0cc55bb877 = $(`<div id="html_f447ab4eaf5b6b101900fd0cc55bb877" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358715°<br>     <b>Longitude:</b> -3.062503333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 173.7°<br>     <b>Heading:</b> 101°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.3 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_2dcb9f11b8729bd63b2163d7216d6e62.setContent(html_f447ab4eaf5b6b101900fd0cc55bb877);
+            
+        
+
+        circle_53042cd83383f84e01fd503c90b145b2.bindPopup(popup_2dcb9f11b8729bd63b2163d7216d6e62)
+        ;
+
+        
+    
+    
+            var circle_b39216d210a3dabaa97740d05e2604a9 = L.circle(
+                [43.358715, -3.062496667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_35f45c9a6057ba386c47e8d55cd17d29 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_910a400f0da4d50c2dfb7fca8fa43b58 = $(`<div id="html_910a400f0da4d50c2dfb7fca8fa43b58" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358715°<br>     <b>Longitude:</b> -3.062496667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 177.8°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_35f45c9a6057ba386c47e8d55cd17d29.setContent(html_910a400f0da4d50c2dfb7fca8fa43b58);
+            
+        
+
+        circle_b39216d210a3dabaa97740d05e2604a9.bindPopup(popup_35f45c9a6057ba386c47e8d55cd17d29)
+        ;
+
+        
+    
+    
+            var circle_0c3a9a58e3cd0bbb11c14dfe58a96a65 = L.circle(
+                [43.35872166666667, -3.062495],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_e15541d711c24046d9542d5e1ee777a0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_7dfae25d0e019deab93e008c5000da87 = $(`<div id="html_7dfae25d0e019deab93e008c5000da87" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872166666667°<br>     <b>Longitude:</b> -3.062495°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 170.1°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_e15541d711c24046d9542d5e1ee777a0.setContent(html_7dfae25d0e019deab93e008c5000da87);
+            
+        
+
+        circle_0c3a9a58e3cd0bbb11c14dfe58a96a65.bindPopup(popup_e15541d711c24046d9542d5e1ee777a0)
+        ;
+
+        
+    
+    
+            var circle_46d4a65a73a581501ffe8d6dbee56995 = L.circle(
+                [43.35872666666667, -3.062486667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_966fa56911615d0ba9289046c15c3e13 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1384ab2b57c491970d49a99e47637e12 = $(`<div id="html_1384ab2b57c491970d49a99e47637e12" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872666666667°<br>     <b>Longitude:</b> -3.062486667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 170.1°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_966fa56911615d0ba9289046c15c3e13.setContent(html_1384ab2b57c491970d49a99e47637e12);
+            
+        
+
+        circle_46d4a65a73a581501ffe8d6dbee56995.bindPopup(popup_966fa56911615d0ba9289046c15c3e13)
+        ;
+
+        
+    
+    
+            var circle_49e1d7dd77c5a53ed7fc59d0226e5bef = L.circle(
+                [43.35874, -3.062481667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_c55d34c22fbd511ca99f6b06af93b13c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cde5c886d3040567ef05854bb58c4446 = $(`<div id="html_cde5c886d3040567ef05854bb58c4446" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35874°<br>     <b>Longitude:</b> -3.062481667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 176.7°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_c55d34c22fbd511ca99f6b06af93b13c.setContent(html_cde5c886d3040567ef05854bb58c4446);
+            
+        
+
+        circle_49e1d7dd77c5a53ed7fc59d0226e5bef.bindPopup(popup_c55d34c22fbd511ca99f6b06af93b13c)
+        ;
+
+        
+    
+    
+            var circle_82a9eb1d6e9dfc0a21536fdc87a8d51d = L.circle(
+                [43.358735, -3.062481667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_aa4e69c22d89a74b88314d1d1841edbb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f24b4f5c730265069fac33a03eeb9554 = $(`<div id="html_f24b4f5c730265069fac33a03eeb9554" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358735°<br>     <b>Longitude:</b> -3.062481667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 195.9°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_aa4e69c22d89a74b88314d1d1841edbb.setContent(html_f24b4f5c730265069fac33a03eeb9554);
+            
+        
+
+        circle_82a9eb1d6e9dfc0a21536fdc87a8d51d.bindPopup(popup_aa4e69c22d89a74b88314d1d1841edbb)
+        ;
+
+        
+    
+    
+            var circle_e54fbc973c6df95006d9b9eaf9e8a8ad = L.circle(
+                [43.358716666666666, -3.06249],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_9b00342c67c7368a1e87c0eb03997b36 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_43e0878f69c545c86ab1d7cea5a3f883 = $(`<div id="html_43e0878f69c545c86ab1d7cea5a3f883" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358716666666666°<br>     <b>Longitude:</b> -3.06249°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 182.4°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.4 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_9b00342c67c7368a1e87c0eb03997b36.setContent(html_43e0878f69c545c86ab1d7cea5a3f883);
+            
+        
+
+        circle_e54fbc973c6df95006d9b9eaf9e8a8ad.bindPopup(popup_9b00342c67c7368a1e87c0eb03997b36)
+        ;
+
+        
+    
+    
+            var circle_1115a64ea2e236f3505231bd38caffdf = L.circle(
+                [43.35871, -3.062495],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_c2022c359ef3612963544d05658b866f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5162d1f89bd9204aa5ba1aad9471f93a = $(`<div id="html_5162d1f89bd9204aa5ba1aad9471f93a" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35871°<br>     <b>Longitude:</b> -3.062495°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 184.7°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_c2022c359ef3612963544d05658b866f.setContent(html_5162d1f89bd9204aa5ba1aad9471f93a);
+            
+        
+
+        circle_1115a64ea2e236f3505231bd38caffdf.bindPopup(popup_c2022c359ef3612963544d05658b866f)
+        ;
+
+        
+    
+    
+            var circle_c8f4550e6af92a8a335582d06d08d71a = L.circle(
+                [43.35871, -3.062501667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_43ce6faa6174f143a10da92709bc420a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c6e723f7e20db863f5e9e5df470eedf9 = $(`<div id="html_c6e723f7e20db863f5e9e5df470eedf9" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35871°<br>     <b>Longitude:</b> -3.062501667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 171.6°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_43ce6faa6174f143a10da92709bc420a.setContent(html_c6e723f7e20db863f5e9e5df470eedf9);
+            
+        
+
+        circle_c8f4550e6af92a8a335582d06d08d71a.bindPopup(popup_43ce6faa6174f143a10da92709bc420a)
+        ;
+
+        
+    
+    
+            var circle_290e0d26a7dd9faf94cf6e8310b25284 = L.circle(
+                [43.35870833333333, -3.0625],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_731f1ad5af2c0659d9abf9e0e87082c3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d09be6c3c042c5c9fc72e2a01fbe17e8 = $(`<div id="html_d09be6c3c042c5c9fc72e2a01fbe17e8" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35870833333333°<br>     <b>Longitude:</b> -3.0625°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 179.7°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_731f1ad5af2c0659d9abf9e0e87082c3.setContent(html_d09be6c3c042c5c9fc72e2a01fbe17e8);
+            
+        
+
+        circle_290e0d26a7dd9faf94cf6e8310b25284.bindPopup(popup_731f1ad5af2c0659d9abf9e0e87082c3)
+        ;
+
+        
+    
+    
+            var circle_25c9ebe26c9486da2b25914e4d15e6ed = L.circle(
+                [43.35871, -3.0625],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_7779267e1cea577e6b4ecfce9370dc6e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a8d089eb2697d831af094d484381574a = $(`<div id="html_a8d089eb2697d831af094d484381574a" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35871°<br>     <b>Longitude:</b> -3.0625°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 176.2°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_7779267e1cea577e6b4ecfce9370dc6e.setContent(html_a8d089eb2697d831af094d484381574a);
+            
+        
+
+        circle_25c9ebe26c9486da2b25914e4d15e6ed.bindPopup(popup_7779267e1cea577e6b4ecfce9370dc6e)
+        ;
+
+        
+    
+    
+            var circle_c6e992383636bc141a921dd871b955f3 = L.circle(
+                [43.35872333333333, -3.062493333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_251db28e21547706b87d991aef455904 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_30556dbe576469fbe5322c5e8dca10cc = $(`<div id="html_30556dbe576469fbe5322c5e8dca10cc" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872333333333°<br>     <b>Longitude:</b> -3.062493333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 188.0°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_251db28e21547706b87d991aef455904.setContent(html_30556dbe576469fbe5322c5e8dca10cc);
+            
+        
+
+        circle_c6e992383636bc141a921dd871b955f3.bindPopup(popup_251db28e21547706b87d991aef455904)
+        ;
+
+        
+    
+    
+            var circle_51389719fcae168acb12d25f8eec9aa2 = L.circle(
+                [43.35873333333333, -3.062495],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_ece121aaf1c16991116ccd9463dd3192 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c2e7b9f08f9d97f938579c04054ba67d = $(`<div id="html_c2e7b9f08f9d97f938579c04054ba67d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873333333333°<br>     <b>Longitude:</b> -3.062495°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 180.3°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_ece121aaf1c16991116ccd9463dd3192.setContent(html_c2e7b9f08f9d97f938579c04054ba67d);
+            
+        
+
+        circle_51389719fcae168acb12d25f8eec9aa2.bindPopup(popup_ece121aaf1c16991116ccd9463dd3192)
+        ;
+
+        
+    
+    
+            var circle_aba83594651d1ccb0743b8887f2d1936 = L.circle(
+                [43.35873, -3.062493333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_fff83c503f1597c970518ffb63309e3b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4bbfc8a93f740a05b0d2fce7942fb82d = $(`<div id="html_4bbfc8a93f740a05b0d2fce7942fb82d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873°<br>     <b>Longitude:</b> -3.062493333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 180.8°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.5 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_fff83c503f1597c970518ffb63309e3b.setContent(html_4bbfc8a93f740a05b0d2fce7942fb82d);
+            
+        
+
+        circle_aba83594651d1ccb0743b8887f2d1936.bindPopup(popup_fff83c503f1597c970518ffb63309e3b)
+        ;
+
+        
+    
+    
+            var circle_1158e7920760649918095bae2c2740ea = L.circle(
+                [43.35873166666666, -3.062491667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_483c49a491e9b676be5bff32069a1db8 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e946635e5d1e6803847f7d8b0454f6f4 = $(`<div id="html_e946635e5d1e6803847f7d8b0454f6f4" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873166666666°<br>     <b>Longitude:</b> -3.062491667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 176.4°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_483c49a491e9b676be5bff32069a1db8.setContent(html_e946635e5d1e6803847f7d8b0454f6f4);
+            
+        
+
+        circle_1158e7920760649918095bae2c2740ea.bindPopup(popup_483c49a491e9b676be5bff32069a1db8)
+        ;
+
+        
+    
+    
+            var circle_4ba1c7c3939355e8474def4ba256b4dc = L.circle(
+                [43.35872833333333, -3.062486667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_40124ac9a1b3345d503911b6cf7dbad2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5a1968d0e7414a0b9b80084130de9c78 = $(`<div id="html_5a1968d0e7414a0b9b80084130de9c78" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872833333333°<br>     <b>Longitude:</b> -3.062486667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 183.3°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_40124ac9a1b3345d503911b6cf7dbad2.setContent(html_5a1968d0e7414a0b9b80084130de9c78);
+            
+        
+
+        circle_4ba1c7c3939355e8474def4ba256b4dc.bindPopup(popup_40124ac9a1b3345d503911b6cf7dbad2)
+        ;
+
+        
+    
+    
+            var circle_d15cc9615660198d3c9cd8d7faf2ba6b = L.circle(
+                [43.35873333333333, -3.062485],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_d491f69552ba954c41903c05c930f6e0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6d60bd359e55d999cf7085808e96ef99 = $(`<div id="html_6d60bd359e55d999cf7085808e96ef99" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873333333333°<br>     <b>Longitude:</b> -3.062485°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 190.1°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_d491f69552ba954c41903c05c930f6e0.setContent(html_6d60bd359e55d999cf7085808e96ef99);
+            
+        
+
+        circle_d15cc9615660198d3c9cd8d7faf2ba6b.bindPopup(popup_d491f69552ba954c41903c05c930f6e0)
+        ;
+
+        
+    
+    
+            var circle_50d0576a74aa3e5ea66442ed02d9966a = L.circle(
+                [43.35873333333333, -3.06248],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_49d23e4cc1c87aec2ea1e8e2df9855b0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_256f1e418a6e09c0dc06ea2f75fa0632 = $(`<div id="html_256f1e418a6e09c0dc06ea2f75fa0632" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873333333333°<br>     <b>Longitude:</b> -3.06248°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 185.1°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_49d23e4cc1c87aec2ea1e8e2df9855b0.setContent(html_256f1e418a6e09c0dc06ea2f75fa0632);
+            
+        
+
+        circle_50d0576a74aa3e5ea66442ed02d9966a.bindPopup(popup_49d23e4cc1c87aec2ea1e8e2df9855b0)
+        ;
+
+        
+    
+    
+            var circle_0d1811fc3ae0b3e8cbe82e205642c5f1 = L.circle(
+                [43.35873, -3.06249],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_329ce8c3b97e28cedc760679619d44e9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ef6497c155e649616ce82c473c5ac72d = $(`<div id="html_ef6497c155e649616ce82c473c5ac72d" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873°<br>     <b>Longitude:</b> -3.06249°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 184.3°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_329ce8c3b97e28cedc760679619d44e9.setContent(html_ef6497c155e649616ce82c473c5ac72d);
+            
+        
+
+        circle_0d1811fc3ae0b3e8cbe82e205642c5f1.bindPopup(popup_329ce8c3b97e28cedc760679619d44e9)
+        ;
+
+        
+    
+    
+            var circle_c139908af1a5cb7d0d2957686d71697a = L.circle(
+                [43.35873333333333, -3.06249],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_fd0f5d3cf440551e7da5ec0014b78db0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_159763881555da993a50d72d648cddc7 = $(`<div id="html_159763881555da993a50d72d648cddc7" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873333333333°<br>     <b>Longitude:</b> -3.06249°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 185.5°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.6 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_fd0f5d3cf440551e7da5ec0014b78db0.setContent(html_159763881555da993a50d72d648cddc7);
+            
+        
+
+        circle_c139908af1a5cb7d0d2957686d71697a.bindPopup(popup_fd0f5d3cf440551e7da5ec0014b78db0)
+        ;
+
+        
+    
+    
+            var circle_946ec6390929f2875e449e0066e8846c = L.circle(
+                [43.358725, -3.062495],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_40257a7381d32e21827dd472eb194669 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_05bd40fac605652f1f086ea60e9ab26f = $(`<div id="html_05bd40fac605652f1f086ea60e9ab26f" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358725°<br>     <b>Longitude:</b> -3.062495°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 196.0°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_40257a7381d32e21827dd472eb194669.setContent(html_05bd40fac605652f1f086ea60e9ab26f);
+            
+        
+
+        circle_946ec6390929f2875e449e0066e8846c.bindPopup(popup_40257a7381d32e21827dd472eb194669)
+        ;
+
+        
+    
+    
+            var circle_41c65c3b79db0f87c8a607d40a41893c = L.circle(
+                [43.358735, -3.062498333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_f0b54c372f84e11f773546d3ef141448 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2410cefdf86b0be9bbc0babfa81ae2a3 = $(`<div id="html_2410cefdf86b0be9bbc0babfa81ae2a3" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358735°<br>     <b>Longitude:</b> -3.062498333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 177.9°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_f0b54c372f84e11f773546d3ef141448.setContent(html_2410cefdf86b0be9bbc0babfa81ae2a3);
+            
+        
+
+        circle_41c65c3b79db0f87c8a607d40a41893c.bindPopup(popup_f0b54c372f84e11f773546d3ef141448)
+        ;
+
+        
+    
+    
+            var circle_23ba6c1865b493d804da8fe1bbbc3a80 = L.circle(
+                [43.35873, -3.062498333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_336e448d31042fabe84d6862ed0c8143 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e697930a7d5cb25433bdabfd9f00fc56 = $(`<div id="html_e697930a7d5cb25433bdabfd9f00fc56" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873°<br>     <b>Longitude:</b> -3.062498333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 176.7°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_336e448d31042fabe84d6862ed0c8143.setContent(html_e697930a7d5cb25433bdabfd9f00fc56);
+            
+        
+
+        circle_23ba6c1865b493d804da8fe1bbbc3a80.bindPopup(popup_336e448d31042fabe84d6862ed0c8143)
+        ;
+
+        
+    
+    
+            var circle_fcb715f36c1f821a221288c974b9806c = L.circle(
+                [43.358735, -3.062496667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_094866b1eaafef8d7f161177570a7256 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_227c242811417fa49b8c7c32483b07f3 = $(`<div id="html_227c242811417fa49b8c7c32483b07f3" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358735°<br>     <b>Longitude:</b> -3.062496667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 181.5°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_094866b1eaafef8d7f161177570a7256.setContent(html_227c242811417fa49b8c7c32483b07f3);
+            
+        
+
+        circle_fcb715f36c1f821a221288c974b9806c.bindPopup(popup_094866b1eaafef8d7f161177570a7256)
+        ;
+
+        
+    
+    
+            var circle_b36b4ee51d23ff3999c0aae6eb694fbd = L.circle(
+                [43.35871333333333, -3.062491667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_a8ed9f770ba04c2baaf1d70876d3092b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9e8946d86ff288e607dd4e4310547139 = $(`<div id="html_9e8946d86ff288e607dd4e4310547139" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35871333333333°<br>     <b>Longitude:</b> -3.062491667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 186.1°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_a8ed9f770ba04c2baaf1d70876d3092b.setContent(html_9e8946d86ff288e607dd4e4310547139);
+            
+        
+
+        circle_b36b4ee51d23ff3999c0aae6eb694fbd.bindPopup(popup_a8ed9f770ba04c2baaf1d70876d3092b)
+        ;
+
+        
+    
+    
+            var circle_abb69947b8de33aecca9218057ef893d = L.circle(
+                [43.358711666666665, -3.062486667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_158706101f6ee2fabfe505fb82a88216 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_915c6234763c64b89ba159c025b77ce0 = $(`<div id="html_915c6234763c64b89ba159c025b77ce0" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358711666666665°<br>     <b>Longitude:</b> -3.062486667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 198.2°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.7 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_158706101f6ee2fabfe505fb82a88216.setContent(html_915c6234763c64b89ba159c025b77ce0);
+            
+        
+
+        circle_abb69947b8de33aecca9218057ef893d.bindPopup(popup_158706101f6ee2fabfe505fb82a88216)
+        ;
+
+        
+    
+    
+            var circle_67ae78a757ef41e809c6ca50c4dd53ac = L.circle(
+                [43.35872666666667, -3.062491667],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_ad3c0c7f568a6f78defaba91b31e1d24 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_52189bfe0013ef72d6933723b2065770 = $(`<div id="html_52189bfe0013ef72d6933723b2065770" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872666666667°<br>     <b>Longitude:</b> -3.062491667°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 202.3°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.8 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_ad3c0c7f568a6f78defaba91b31e1d24.setContent(html_52189bfe0013ef72d6933723b2065770);
+            
+        
+
+        circle_67ae78a757ef41e809c6ca50c4dd53ac.bindPopup(popup_ad3c0c7f568a6f78defaba91b31e1d24)
+        ;
+
+        
+    
+    
+            var circle_912987b8cd37c995290d3e2a02ed7928 = L.circle(
+                [43.35873, -3.062497],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_0b20445bf39de76c00bc3fca01cb5bed = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a79a1c9b998da5b2e523252187a90a62 = $(`<div id="html_a79a1c9b998da5b2e523252187a90a62" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35873°<br>     <b>Longitude:</b> -3.062497°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 180.0°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.8 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_0b20445bf39de76c00bc3fca01cb5bed.setContent(html_a79a1c9b998da5b2e523252187a90a62);
+            
+        
+
+        circle_912987b8cd37c995290d3e2a02ed7928.bindPopup(popup_0b20445bf39de76c00bc3fca01cb5bed)
+        ;
+
+        
+    
+    
+            var circle_fbb38dd3f5f1dbb9e59f71af10720259 = L.circle(
+                [43.35872666666667, -3.062498333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_d3773c29c701a148f8f65ed84b459ad3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c05a4d272ca471b365a923bd4cfd43ad = $(`<div id="html_c05a4d272ca471b365a923bd4cfd43ad" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.35872666666667°<br>     <b>Longitude:</b> -3.062498333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 179.9°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.8 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_d3773c29c701a148f8f65ed84b459ad3.setContent(html_c05a4d272ca471b365a923bd4cfd43ad);
+            
+        
+
+        circle_fbb38dd3f5f1dbb9e59f71af10720259.bindPopup(popup_d3773c29c701a148f8f65ed84b459ad3)
+        ;
+
+        
+    
+    
+            var circle_d1f5a17660ae865236a6b8c9905a7a14 = L.circle(
+                [43.358735, -3.062478333],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3000, "stroke": true, "weight": 3}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+        var popup_387193cf869b009ee2646790e811bbe5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cd039490a66922b5d074b671afb20742 = $(`<div id="html_cd039490a66922b5d074b671afb20742" style="width: 100.0%; height: 100.0%;">     <b>SHIP DETAIL:</b><br>     <b>Latitude:</b> 43.358735°<br>     <b>Longitude:</b> -3.062478333°<br>     <b>Speed:</b> 0.0m/s<br>     <b>Course:</b> 131.5°<br>     <b>Heading:</b> 100°<br>     <b>WEATHER CONDITION:</b><br>     <b>Temperature:</b> 282.58 K<br>     <b>Condition:</b> broken clouds <br>     <b>Pressure:</b> 1020 hPa<br>     <b>Humidity:</b> 80%<br>     <b>Sea Level:</b> 1020.0 hPa<br>     <b>Ground Level:</b> 1020.0 hPa<br>     <b>Wind Speed:</b> 4.63 m/s<br>     <b>Wind Degree:</b> 290°<br>     <b>Wind Gust:</b> 11.8 m/s<br>     <b>Cloud Coverage:</b> 75%<br>     </div>`)[0];
+                popup_387193cf869b009ee2646790e811bbe5.setContent(html_cd039490a66922b5d074b671afb20742);
+            
+        
+
+        circle_d1f5a17660ae865236a6b8c9905a7a14.bindPopup(popup_387193cf869b009ee2646790e811bbe5)
+        ;
+
+        
+    
+    
+            ant_path_fd9fa478c92823fe4d3b9db5740963c8 = L.polyline.antPath(
+              [[43.322, -1.9202], [43.322, -1.9202], [43.322, -1.9202], [43.322, -1.9202], [43.322, -1.9202], [43.3582, -1.9806], [43.3848, -2.0825], [43.4078, -2.1804], [43.4303, -2.2804], [43.4554, -2.3803], [43.4803, -2.476], [43.5044, -2.5724], [43.5241, -2.6547], [43.5337, -2.7768], [43.527, -2.8999], [43.4994, -2.9721], [43.4533, -3.0408], [43.427, -3.1064], [43.3699, -3.061], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625], [43.3587, -3.0625]],
+              {"bubblingMouseEvents": true, "color": "black", "dashArray": [15, 30], "dashOffset": null, "delay": 1000, "fill": false, "fillColor": "black", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "paused": false, "pulseColor": "yellow", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+        ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            ant_path_fd9fa478c92823fe4d3b9db5740963c8.bindTooltip(
+                `<div>
+                     <b>To BILBAO, From PASAJES</b>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_452e479d3c4496ad085303e6ef2b9e1d = L.marker(
+                [43.321936666666666, -1.92022],
+                {}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var icon_0c3de0ef7c30cc223fbed09686a887e3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ship", "iconColor": "white", "iconSize": [30, 30], "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_452e479d3c4496ad085303e6ef2b9e1d.setIcon(icon_0c3de0ef7c30cc223fbed09686a887e3);
+        
+    
+        var popup_3cf78dde95f62c9d1207a23737b3ee85 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f1b37661769cb57d1d07403373985b40 = $(`<div id="html_f1b37661769cb57d1d07403373985b40" style="width: 100.0%; height: 100.0%;"><img src='https://www.pasaiaport.eus/images/cabeceras-interiores/puerto-pasaia-vista-aerea.jpg' width='100px'>  <span style='font-family: sans-serif; font-size: 10px; font-weight: bold;'>PASAJES</span></div>`)[0];
+                popup_3cf78dde95f62c9d1207a23737b3ee85.setContent(html_f1b37661769cb57d1d07403373985b40);
+            
+        
+
+        marker_452e479d3c4496ad085303e6ef2b9e1d.bindPopup(popup_3cf78dde95f62c9d1207a23737b3ee85)
+        ;
+
+        
+    
+    
+            var marker_ffc2b61302520e12043ad77731de8466 = L.marker(
+                [43.358735, -3.062478333],
+                {}
+            ).addTo(map_eff6fef397d72e901ccdbedf63d69987);
+        
+    
+            var icon_f4cae612e9e2e1becdd0026123da3a24 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ship", "iconColor": "white", "iconSize": [30, 30], "markerColor": "red", "prefix": "fa"}
+            );
+            marker_ffc2b61302520e12043ad77731de8466.setIcon(icon_f4cae612e9e2e1becdd0026123da3a24);
+        
+    
+        var popup_8d051664456c04d84088e7aaf1687439 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c26a99c0fbd50d0513ab9af1c642b566 = $(`<div id="html_c26a99c0fbd50d0513ab9af1c642b566" style="width: 100.0%; height: 100.0%;"><img src='https://www.aivp.org/wp-content/uploads/2019/10/04_puerto-de-bilbao-junio-16-8289_web-1.jpg' width='100px'>  <span style='font-family: sans-serif; font-size: 10px; font-weight: bold;'>BILBAO</span></div>`)[0];
+                popup_8d051664456c04d84088e7aaf1687439.setContent(html_c26a99c0fbd50d0513ab9af1c642b566);
+            
+        
+
+        marker_ffc2b61302520e12043ad77731de8466.bindPopup(popup_8d051664456c04d84088e7aaf1687439)
+        ;
+
+        
+    
+    
+            var mouse_position_f7ecf557b783dc30d606b7e28de8f34f = new L.Control.MousePosition(
+                {"emptyString": "Unavailable", "lngFirst": false, "numDigits": 5, "position": "topright", "prefix": "Coordinates:", "separator": " | "}
+            );
+            mouse_position_f7ecf557b783dc30d606b7e28de8f34f.options["latFormatter"] =
+                function(num) {return L.Util.formatNum(num, 5);};;
+            mouse_position_f7ecf557b783dc30d606b7e28de8f34f.options["lngFormatter"] =
+                function(num) {return L.Util.formatNum(num, 5);};;
+            map_eff6fef397d72e901ccdbedf63d69987.addControl(mouse_position_f7ecf557b783dc30d606b7e28de8f34f);
+        
+</script>
+</html>
